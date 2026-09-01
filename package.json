@@ -9,9 +9,10 @@
     "test": "echo \"No tests\"",
     "test:e2e": "echo \"No e2e tests\"",
     "lint": "eslint \"src/**/*.ts\" --fix",
-    "migration:generate": "node -r ts-node/register -r dotenv/config ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:generate -n InitialMigration",
-    "migration:run": "node -r ts-node/register -r dotenv/config ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:run",
-    "migration:revert": "node -r ts-node/register -r dotenv/config ./node_modules/typeorm/cli.js -d src/database/data-source.ts migration:revert"
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate src/database/migrations/InitialMigration -d src/database/data-source.ts",
+    "migration:run": "typeorm-ts-node-commonjs -d src/database/data-source.ts migration:run",
+    "migration:revert": "typeorm-ts-node-commonjs -d src/database/data-source.ts migration:revert",
+    "migration:show": "typeorm-ts-node-commonjs migration:show -d src/database/data-source.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
