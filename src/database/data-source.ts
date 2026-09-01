@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import { join } from 'node:path';
 import { DataSource } from 'typeorm';
+import "dotenv/config"
 
 const getNumber = (value: string | undefined, fallback: number): number => {
   const parsed = Number(value ?? fallback);
@@ -26,7 +27,7 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: getBoolean(process.env.DB_LOGGING, false),
   entities: [join(__dirname, '..', '**', '*.entity.{ts,js}')],
-  migrations: [join(__dirname, 'migrations', '*.{ts,js}')],
+  migrations: ['src/database/migrations/*.ts'],
   subscribers: [],
   extra: {
     max: getNumber(process.env.DB_POOL_MAX, 20),
