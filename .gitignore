@@ -7,3 +7,6 @@ coverage/
 .DS_Store
 npm-debug.log
 yarn-error.log
+
+# Database backups
+*.sql
